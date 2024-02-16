@@ -5,9 +5,13 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-ScreenAimService-3F4A6397-A06A-4AE4-869E-9EEAE7819E57</UserSecretsId>
+        <OutputType>exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="GameOverlay.Net" Version="4.3.1" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
+        <PackageReference Include="SharpHook" Version="5.2.3" />
     </ItemGroup>
 </Project>

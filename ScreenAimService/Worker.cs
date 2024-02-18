@@ -26,19 +26,9 @@ public class Worker(ILogger<Worker> logger) : BackgroundService
 
         _logger.LogInformation("Keyboard hooked");
 
-        
-        try
-        {
-            _logger.LogInformation("Keyboard hook startup");
-
-            await _hook.RunAsync();
-        }
-        catch (Exception e)
-        {
-            _logger.LogError($"Error: {e.ToMessageAndCompleteStacktrace()}", "HHIU");
-        }
+        await _hook.RunAsync();
     }
-
+    
     private void HookOnKeyPressed(object? sender, KeyboardHookEventArgs e)
     {
         var key = e.Data.KeyCode;
@@ -52,7 +42,7 @@ public class Worker(ILogger<Worker> logger) : BackgroundService
         
         ScreenManager.GeToNext(out var nextMonitor);
 
-        //new Thread(_ => new ScreenMarker(nextMonitor).Run()).Start();
+        new Thread(_ => new ScreenMarker(nextMonitor).Run()).Start();
         
         _logger.LogInformation("Switched to next monitor: {monitorInfo.DeviceName}", nextMonitor.DeviceName);
     }
